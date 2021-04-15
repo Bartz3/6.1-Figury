@@ -7,7 +7,6 @@ namespace _6._1_Figury
     {
         private int x;
         private int y;
-
         public Punkt() { }
         public Punkt(int pierwszy, int drugi) { x = pierwszy; y = drugi; }
 
@@ -44,7 +43,7 @@ namespace _6._1_Figury
     class Trojkat
     {
         private Linia pierwsza = new Linia();
-        private Linia druga  = new Linia();
+        private Linia druga = new Linia();
         private Linia trzecia = new Linia();
         public Trojkat() { }
         public Trojkat(Linia l1, Linia l2, Linia l3)
@@ -96,15 +95,33 @@ namespace _6._1_Figury
 
         List<Trojkat> trojkaty = new List<Trojkat>();
         List<Czworokat> czworokaty = new List<Czworokat>();
-        public void dodajTrojkat(List<Trojkat> czworokat, Trojkat t)
-        {
-            czworokat.Add(t);
-        }
-        public void dodajCzworokat(List<Czworokat> czworokat,Czworokat cz)
-        {
-            czworokat.Add(cz);
-        }
 
+        public void dodajTrojkat(Trojkat t)
+        {
+            trojkaty.Add(t);
+        }
+        public void dodajCzworokat( Czworokat cz)
+        {
+            czworokaty.Add(cz);
+        }
+        public void przesunTrojkat(int dx, int dy, int index)
+        {
+            trojkaty[index].przesun(dx, dy);
+
+
+        }
+        public void przesunCzworokat(int dx, int dy, int index)
+        {
+            czworokaty[index].przesun(dx, dy);
+        }
+        public string toString(Trojkat t)
+        {
+            return t.toString();
+        }
+        public string toString(Czworokat cz)
+        {
+            return cz.toString();
+        }
 
     }
 
@@ -112,16 +129,19 @@ namespace _6._1_Figury
     {
         static void Main(string[] args)
         {
-            Punkt p1 = new Punkt(0, 0), p2 = new Punkt(1, 1), p3=new Punkt(2,2);
-            Linia l1 = new Linia(p1, p2), l2 = new Linia(p1, p2),l3=new Linia(p1,p3),l4=new Linia(p2,p3);
-            l1.przesun(5,5);
-            l2.przesun(1,1);
+            Punkt p1 = new Punkt(0, 0), p2 = new Punkt(1, 1), p3 = new Punkt(2, 2);
+            Linia l1 = new Linia(p1, p2), l2 = new Linia(p1, p2), l3 = new Linia(p1, p3), l4 = new Linia(p2, p3);
+            l1.przesun(5, 5);
+            l2.przesun(1, 1);
             Console.WriteLine(l1.toString());
-           Trojkat t1 = new Trojkat(l1,l2,l3) ;
-           t1.przesun(200, 200);
-         
-           Czworokat cz1 = new Czworokat(l1, l2, l3, l4);
-           cz1.przesun(1001, 1001);
+            Trojkat t1 = new Trojkat(l1, l2, l3);
+            t1.przesun(10, 10);
+
+            Czworokat cz1 = new Czworokat(l1, l2, l3, l4);
+            cz1.przesun(20, 21);
+
+            Obraz obraz = new Obraz();
+            obraz.dodajCzworokat(cz1);
 
             Console.WriteLine(l1);
             Console.WriteLine(l2);
@@ -133,8 +153,6 @@ namespace _6._1_Figury
             Console.WriteLine(t1.toString());
             Console.WriteLine(cz1.toString());
 
-            int wybor = 0;
-            //switch(wybor)
         }
     }
 }
