@@ -53,7 +53,7 @@ namespace _6._1_Figury
             trzecia = new Linia(l3);
         }
 
-        public Trojkat(Trojkat t) { pierwsza = t.pierwsza; druga = t.druga; trzecia = t.trzecia; }
+        public Trojkat(Trojkat t) { pierwsza = new Linia(t.pierwsza); druga =new Linia(t.druga); trzecia =new Linia(t.trzecia); }
 
         public void przesun(int dx, int dy)
         {
@@ -72,7 +72,7 @@ namespace _6._1_Figury
 
         public Czworokat() { }
 
-        public Czworokat(Czworokat cz) { pierwsza = cz.pierwsza; druga = cz.druga; trzecia = cz.trzecia; czwarta = cz.czwarta; }
+        public Czworokat(Czworokat cz) { pierwsza = new Linia(cz.pierwsza); druga = new Linia(cz.druga); trzecia = new Linia(cz.trzecia); czwarta = new Linia(cz.czwarta); }
         public Czworokat(Linia l1, Linia l2, Linia l3, Linia l4)
         {
             pierwsza = new Linia(l1);
@@ -100,7 +100,7 @@ namespace _6._1_Figury
         {
             trojkaty.Add(t);
         }
-        public void dodajCzworokat( Czworokat cz)
+        public void dodajCzworokat(Czworokat cz)
         {
             czworokaty.Add(cz);
         }
